@@ -123,9 +123,7 @@
         const serializedData = localStorage.getItem('userData');
         const data = JSON.parse(serializedData);
         const {uuid , gameType} = data;
-        // console.log(data);
         async function fetchGame(uuid , gameType) {
-            console.log(//dyslexiaback.ainz.uk/game?type=${gameType}&uuid=${uuid})
                 return await fetch(//dyslexiaback.ainz.uk/game?type=${gameType}&uuid=${uuid}, {
                   method: 'GET'
                 })
@@ -142,7 +140,10 @@
 
         document.addEventListener('DOMContentLoaded', async function () {
             const gameData = await fetchGame(uuid , gameType);
-            console.log(gameData);
+            if (gameData.level == 4) {
+                window.location.href = 'win.html';
+                return;
+            }
             if (gameData && gameData.gameType === 'stt') {
                 // Redirect to speech.html if gameType is 'stt'
                 window.location.href = 'speech.html';
@@ -380,14 +381,18 @@ async function sendCheckRequest(answersArray) {
   const answers = answersArray.join(',');
 
   const url = //dyslexiaback.ainz.uk/check?userId=${uuid}&answers=${answers};
-  console.log(url);
 
   try {
       const response = await fetch(url);
       if (response.ok) {
           const result = await response.json();
-          console.log(result);
-
+           
+            // Check if the current level is 4 and the user has passed it
+            if (result.level > 3 && result.successRate > 70) {
+                // Redirect to win.html if user passes level 4
+                window.location.href = 'win.html';
+                return; // Terminate early since we're navigating away
+            }
           // Check for the next game type
           if (result.nextGameType === 'stt') {
               // Load speech game HTML
