@@ -1,0 +1,217 @@
+{
+  "ping": {
+    "pong": "test"
+  },
+  "users": {
+    "8db93a7e-6d3b-407f-95c4-bbfd1e8e89b3": {
+      "uuid": "8db93a7e-6d3b-407f-95c4-bbfd1e8e89b3",
+      "username": "ainz",
+      "rightAnswers": 13,
+      "wrongAnswers": 5,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 4,
+      "gameType": "stt"
+    },
+    "39fea088-a972-4d7e-8f48-c3bb5109d8f0": {
+      "uuid": "39fea088-a972-4d7e-8f48-c3bb5109d8f0",
+      "username": "ainz",
+      "rightAnswers": 2,
+      "wrongAnswers": 0,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 1,
+      "gameType": "dad"
+    },
+    "be24b30e-fd2a-4507-a8ef-a96dc25fdfbb": {
+      "uuid": "be24b30e-fd2a-4507-a8ef-a96dc25fdfbb",
+      "username": "ADAM",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "dce13f5b-3850-4812-bfe9-97424678147f": {
+      "uuid": "dce13f5b-3850-4812-bfe9-97424678147f",
+      "username": "Adam",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "6a57abf8-3b86-494a-9b51-47984c8183c9": {
+      "uuid": "6a57abf8-3b86-494a-9b51-47984c8183c9",
+      "username": "Adam",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "fa35087a-6de3-49a3-971b-86aafdb506f7": {
+      "uuid": "fa35087a-6de3-49a3-971b-86aafdb506f7",
+      "username": "Somo",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "d04f741d-7e25-48cd-8be8-c8d747213550": {
+      "uuid": "d04f741d-7e25-48cd-8be8-c8d747213550",
+      "username": "test",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "ad9b549c-fd9c-4f62-b594-83ae2714152b": {
+      "uuid": "ad9b549c-fd9c-4f62-b594-83ae2714152b",
+      "username": "MAmado",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "4ef2f858-e075-4d34-bf07-a0989b63b962": {
+      "uuid": "4ef2f858-e075-4d34-bf07-a0989b63b962",
+      "username": "Jofo",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "b1ad20db-b260-4012-8498-8a8d765c1ba8": {
+      "uuid": "b1ad20db-b260-4012-8498-8a8d765c1ba8",
+      "username": "dodo",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "80736f00-bad5-467e-923c-a69fd8afb0fb": {
+      "uuid": "80736f00-bad5-467e-923c-a69fd8afb0fb",
+      "username": "vovo",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "c5f36048-027d-423e-942c-637b06dab291": {
+      "uuid": "c5f36048-027d-423e-942c-637b06dab291",
+      "username": "adam",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "1fd1e861-d288-4aef-8ebb-fd7106e4dc92": {
+      "uuid": "1fd1e861-d288-4aef-8ebb-fd7106e4dc92",
+      "username": "hamza",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "f5e26b83-cd47-4c1b-b779-1c60a2e8671c": {
+      "uuid": "f5e26b83-cd47-4c1b-b779-1c60a2e8671c",
+      "username": "test1",
+      "rightAnswers": 0,
+      "wrongAnswers": 0,
+      "successRate": 0,
+      "averageTime": 0,
+      "level": 0,
+      "gameType": "dad"
+    },
+    "08bba963-50f9-46ae-86d2-06d47b08b096": {
+      "uuid": "08bba963-50f9-46ae-86d2-06d47b08b096",
+      "username": "test",
+      "rightAnswers": 2,
+      "wrongAnswers": 10,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 1,
+      "gameType": "dad"
+    },
+    "5194e3d2-24fd-49ea-80fb-b86b1c4fa47f": {
+      "uuid": "5194e3d2-24fd-49ea-80fb-b86b1c4fa47f",
+      "username": "vovo",
+      "rightAnswers": 10,
+      "wrongAnswers": 6,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 4,
+      "gameType": "stt"
+    },
+    "c3e5edee-d1e2-4169-8d2d-60b6ba7a40d4": {
+      "uuid": "c3e5edee-d1e2-4169-8d2d-60b6ba7a40d4",
+      "username": "test42",
+      "rightAnswers": 8,
+      "wrongAnswers": 0,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 4,
+      "gameType": "stt"
+    },
+    "c40a1c4f-9aba-44a4-a4ae-b0815a11fd28": {
+      "uuid": "c40a1c4f-9aba-44a4-a4ae-b0815a11fd28",
+      "username": "hello5",
+      "rightAnswers": 8,
+      "wrongAnswers": 0,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 4,
+      "gameType": "stt"
+    },
+    "bbdef02d-3178-4838-87c7-c628283770dc": {
+      "uuid": "bbdef02d-3178-4838-87c7-c628283770dc",
+      "username": "fklhdaf",
+      "rightAnswers": 4,
+      "wrongAnswers": 0,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 2,
+      "gameType": "dad"
+    },
+    "cccadcd5-2f45-4c02-b34b-6b412a93ea8c": {
+      "uuid": "cccadcd5-2f45-4c02-b34b-6b412a93ea8c",
+      "username": "hello5",
+      "rightAnswers": 8,
+      "wrongAnswers": 0,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 4,
+      "gameType": "stt"
+    },
+    "45445f67-4ee3-4b0f-8c0d-ef2f3f1952e2": {
+      "uuid": "45445f67-4ee3-4b0f-8c0d-ef2f3f1952e2",
+      "username": "test",
+      "rightAnswers": 8,
+      "wrongAnswers": 0,
+      "successRate": 100,
+      "averageTime": 0,
+      "level": 4,
+      "gameType": "stt"
+    }
+  }
+}

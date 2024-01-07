@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="4;url=dynamic.html">
+
+    <title>Centered Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: [
+                "*.{html}"
+            ],
+            theme: {
+                extend: {
+                    backgroundImage: {
+                        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                        "gradient-conic":
+                            "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                            'stars_bg': "url('assets/images/stars_bg.webp')",
+                    },
+                    fontFamily: {
+                        valoon: ["Valoon", "sans-serif"],
+                        varela: ["Varela Round", "sans-serif"],
+                        farsan: ["Farsan", "cursive"],
+                        ghibo: ["Ghibo Talk", "sans-serif"],
+                        superbubble: ["Super Bubble", "sans-serif"],
+                    },
+                },
+            },
+            plugins: [],
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&display=swap');
+
+        :root {
+            --foreground-rgb: 0, 0, 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --foreground-rgb: 255, 255, 255;
+            }
+        }
+
+        body {
+            color: rgb(var(--foreground-rgb));
+            background: #FFF8E7;
+        }
+
+        .text-stroke-3 {
+            text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+        }
+        
+        @font-face {
+            font-family: 'Valoon';
+            src: url('assets/Valoon.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Super Bubble';
+            src: url('assets/Super Bubble.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ghibo Talk';
+            src: url('assets/Ghibo Talk.otf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Preventing the default image drag behavior */
+        div[draggable="true"] {
+            cursor: pointer;
+        }
+
+        /* Add transitions for smooth dragging and dropping */
+        .dropzone,
+        .draggable {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Cursor updates */
+        .draggable {
+            cursor: grab;
+        }
+
+        .draggable:active {
+            cursor: grabbing;
+        }
+
+        .dropzone {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-stars_bg cursor-pointer bg-cover bg-no-repeat bg-center w-screen h-screen m-0 p-0 flex justify-center select-none"
+    >
+    <div class="absolute min-w-full min-h-screen left-0 top-0 items-center inline-flex opacity-80 bg-green-300">
+        <div class="w-full text-center text-blue-950 text-[156px] font-normal font-ghibo">Well Done !</div>
+    </div>
+</body>
+</html>

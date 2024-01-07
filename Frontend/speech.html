@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: [
+                "*.{html}"
+            ],
+            theme: {
+                extend: {
+                    backgroundImage: {
+                        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                        "gradient-conic":
+                            "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                        'speech_bg': "url('assets/images/speech_bg.webp')",
+                    },
+                    fontFamily: {
+                        valoon: ["Valoon", "sans-serif"],
+                        varela: ["Varela Round", "sans-serif"],
+                        farsan: ["Farsan", "cursive"],
+                        ghibo: ["Ghibo Talk", "sans-serif"],
+                        superbubble: ["Super Bubble", "sans-serif"],
+                    },
+                },
+            },
+            plugins: [],
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&display=swap');
+
+        :root {
+            --foreground-rgb: 0, 0, 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --foreground-rgb: 255, 255, 255;
+            }
+        }
+
+        body {
+            color: rgb(var(--foreground-rgb));
+            background: #FFF8E7;
+        }
+
+        .text-stroke-3 {
+            text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+        }
+
+        @font-face {
+            font-family: 'Valoon';
+            src: url('assets/Valoon.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Super Bubble';
+            src: url('assets/Super Bubble.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Valoon';
+            src: url('assets/Valoon.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ghibo Talk';
+            src: url('assets/Ghibo Talk.otf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .recording-effect {
+            filter: blur(1px) invert(0.1) brightness(1.1);
+        }
+    </style>
+</head>
+
+<body class="bg-speech_bg bg-cover bg-no-repeat bg-center w-screen h-screen m-0 p-0 flex  justify-center select-none">
+
+    <button onclick='tts("Read The Word");'
+        class="fixed top-[15%] text-[#11235A] text-stroke-3 left-[0] text-8xl w-screen flex items-center justify-center font-valoon">
+        <span>Read The Word</span>
+    </button>
+    <div class="w-full h-full flex flex-col items-center justify-center gap-2">
+
+        <div class="flex w-full justify-center gap-2">
+            <input
+                class="max-w-[70%] dropzone border select-none text-center border-[#ADD8E6] text-white rounded-md p-4 text-6xl flex items-center justify-center font-superbubble"
+                id="dropzone1" disabled value="dog"></input>
+        </div>
+    </div>
+    <button id="recordButton" type="button"
+        class="fixed bottom-[10%] left-[0] text-8xl w-screen flex gap-4 items-center justify-center font-valoon hover:blur-xs cursor-pointer hover:invert hover:brightness-10 transition-all duration-300 ease-in-out">
+        <img class="w-24 h-24" src="assets/images/mic.svg" alt="">
+    </button>
+    <br>
+    <audio id="audioPlayer" autoplay class="hidden"></audio>
+
+    <!-- The rest of your HTML remains unchanged -->
+    <script>
+        document.getElementById('recordButton').addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Reference to the record button
+            const recordButton = this;
+
+            // Disable the button and apply the recording effect
+            recordButton.disabled = true;
+            recordButton.classList.add('recording-effect');
+
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(stream => {
+                    const mediaRecorder = new MediaRecorder(stream);
+                    let audioChunks = [];
+
+                    mediaRecorder.addEventListener('dataavailable', event => {
+                        audioChunks.push(event.data);
+                    });
+
+                    mediaRecorder.addEventListener('stop', () => {
+                        // Re-enable the button and remove the recording effect
+                        recordButton.disabled = false;
+                        recordButton.classList.remove('recording-effect');
+
+                        const audioBlob = new Blob(audioChunks, { 'type': 'audio/webm' });
+                        const reader = new FileReader();
+
+
+                        reader.readAsDataURL(audioBlob);
+                        reader.onloadend = function () {
+                            const base64data = reader.result;
+
+                            fetch('//localhost:3000/transcribe', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({ audio: base64data, wanted_word: 'dog' })
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Success:', data);
+                                    // Select the input element
+                                    const inputElement = document.getElementById("dropzone1");
+                                    // Check the rate value and apply styles accordingly
+                                    if (data.rate) {
+                                        // If rate is true, change text and border to green
+                                        inputElement.classList.add("text-green-500", "border-green-500");
+                                        inputElement.classList.remove("text-red-500", "border-red-500");
+                                    } else {
+                                        // If rate is false, change text and border to red
+                                        inputElement.classList.add("text-red-500", "border-red-500");
+                                        inputElement.classList.remove("text-green-500", "border-green-500");
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.error('Error:', error);
+                                });
+                        };
+                    });
+
+                    mediaRecorder.start();
+
+                    // Set the time for how long you want to record
+                    setTimeout(() => {
+                        mediaRecorder.stop();
+                        stream.getTracks().forEach(track => track.stop());
+                    }, 2000); // Adjust the time as needed
+                })
+                .catch(error => {
+                    console.error('Could not get user media', error);
+                    // Re-enable the button and remove the recording effect in case of error
+                    recordButton.disabled = false;
+                    recordButton.classList.remove('recording-effect');
+                });
+        });
+        function tts(text) {
+            fetch('http://localhost:3000/talk', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: text })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const audioPlayer = document.getElementById('audioPlayer');
+                    audioPlayer.src = url;
+                    return audioPlayer.play();
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+    </script><!-- The rest of your HTML remains unchanged -->
+
+</body>
+
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: [
+                "*.{html}"
+            ],
+            theme: {
+                extend: {
+                    backgroundImage: {
+                        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                        "gradient-conic":
+                            "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                            'stars_bg': "url('assets/images/stars_bg.webp')",
+                    },
+                    fontFamily: {
+                        valoon: ["Valoon", "sans-serif"],
+                        varela: ["Varela Round", "sans-serif"],
+                        farsan: ["Farsan", "cursive"],
+                        ghibo: ["Ghibo Talk", "sans-serif"],
+                        superbubble: ["Super Bubble", "sans-serif"],
+                    },
+                },
+            },
+            plugins: [],
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&display=swap');
+
+        :root {
+            --foreground-rgb: 0, 0, 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --foreground-rgb: 255, 255, 255;
+            }
+        }
+
+        body {
+            color: rgb(var(--foreground-rgb));
+            background: #FFF8E7;
+        }
+
+        .text-stroke-3 {
+            text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+        }
+        
+        @font-face {
+            font-family: 'Valoon';
+            src: url('assets/Valoon.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Super Bubble';
+            src: url('assets/Super Bubble.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ghibo Talk';
+            src: url('assets/Ghibo Talk.otf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Preventing the default image drag behavior */
+        div[draggable="true"] {
+            cursor: pointer;
+        }
+
+        /* Add transitions for smooth dragging and dropping */
+        .dropzone,
+        .draggable {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Cursor updates */
+        .draggable {
+            cursor: grab;
+        }
+
+        .draggable:active {
+            cursor: grabbing;
+        }
+
+        .dropzone {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-stars_bg bg-cover bg-no-repeat bg-center w-screen h-screen m-0 p-0 flex  justify-center select-none">
+    <div class="level-container fixed top-[4%] text-[#11235A] text-stroke-3 left-[0] text-8xl w-screen flex items-center justify-center font-valoon">
+        <!-- Level will be inserted here dynamically -->
+    </div>
+    <div class="image-container  w-1/2 h-full flex flex-col items-center justify-center gap-6">
+        <!-- Images and static letters will be inserted here dynamically -->
+    </div>
+    <div class="image-container w-1/2 h-full flex flex-col items-center justify-center gap-6">
+        <!-- Images and static letters will be inserted here dynamically -->
+    </div>
+    <div
+        class="draggable-letters-container fixed bottom-[4%] left-[0] text-8xl w-screen flex gap-4 items-center justify-center font-valoon">
+        <!-- Draggable letters will be inserted here dynamically -->
+    </div>
+    <!-- ... (rest of the body content) ... -->
+    <script>
+        const serializedData = localStorage.getItem('userData');
+        const data = JSON.parse(serializedData);
+        const {uuid , gameType} = data;
+        // console.log(data);
+        async function fetchGame(uuid , gameType) {
+            console.log(`http://localhost:3000/game?type=${gameType}&uuid=${uuid}`)
+                return await fetch(`http://localhost:3000/game?type=${gameType}&uuid=${uuid}`, {
+                  method: 'GET'
+                })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                  return response.json();
+                })
+                .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+                });
+            }
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            const gameData = await fetchGame(uuid , gameType);
+            console.log(gameData);
+            
+            function insertLevel(level) {
+                const levelContainer = document.querySelector('.level-container');
+                levelContainer.innerHTML = `<span>Level ${level}</span>`;
+            }
+
+            function insertImagesAndLetters(images, letters) {
+                if (!Array.isArray(images) || !Array.isArray(letters)) {
+                    console.error('Invalid parameters. Both images and letters should be arrays.');
+                    return;
+                }
+                const imageContainers = document.querySelectorAll('.image-container');
+
+                images.forEach((image, index) => {
+                    // Only proceed if there is a corresponding image container
+                    if (index < imageContainers.length) {
+                        const letterHtml = image.alt.split('').map((char, i) => {
+                            if (char === '_') {
+                                return `<div class="dropzone bg-[#1B0735] border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center font-superbubble" id="dropzone${index}-${i}">_</div>`;
+                            } else {
+                                return `<div class="bg-[#1B0735] border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center font-superbubble">${char}</div>`;
+                            }
+                        }).join('');
+
+                        const imageHtml = `
+                <div class="w-64 h-64 rounded-lg flex justify-center items-center bg-sky-200 p-4">
+                    <div class="absolute w-72 h-72 bg-[#C16F96] rounded-lg border-8 border-stone-400 blur-[30px] z-[-1]"></div>
+
+                        <img src="${image.src}" alt="${image.alt}" class="w-full h-full object-contain" />
+                </div>
+                <div class="flex gap-2">${letterHtml}</div>
+            `;
+                        imageContainers[index].innerHTML = imageHtml;
+                    }
+                });
+            }
+            function insertDraggableLetters(letters) {
+                const draggableLettersContainer = document.querySelector('.draggable-letters-container');
+                // randomize letters[0].draggable array indexes and change the original array
+                for (let i = letters[0].draggable.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [letters[0].draggable[i], letters[0].draggable[j]] = [letters[0].draggable[j], letters[0].draggable[i]];
+                }
+                const draggableLettersHtml = letters[0].draggable.map((letter, i) => {
+                    return `
+      <div class="draggable bg-[#1B0735] border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center cursor-pointer" draggable="true" id="draggable-${i}">${letter}</div>
+    `}).join('');
+                draggableLettersContainer.innerHTML = draggableLettersHtml;
+            }
+
+            insertLevel(gameData.level);
+            insertImagesAndLetters(gameData.images, gameData.letters);
+            insertDraggableLetters(gameData.letters);
+
+            // Reattach event listeners to the dynamically created elements
+            attachEventListeners();
+        });
+
+        function attachEventListeners() {
+            const draggables = document.querySelectorAll('.draggable');
+            const dropzones = document.querySelectorAll('.dropzone');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', startDrag);
+                draggable.addEventListener('dragend', endDrag);
+            });
+
+            dropzones.forEach(dropzone => {
+                dropzone.addEventListener('dragover', function (event) {
+                    event.preventDefault();
+                    event.dataTransfer.dropEffect = "move";
+                });
+                dropzone.addEventListener('drop', function (event) {
+                    dropped(event, this.id);
+                });
+            });
+        }
+
+        // Function to handle the start of dragging
+        function dragging(event) {
+            event.dataTransfer.setData("text", event.target.id);
+            event.target.classList.add('dragging'); // Visual feedback for dragging
+        }
+
+        // Function to handle the drop
+        function dropped(event, targetId) {
+            event.preventDefault();
+            const draggedId = event.dataTransfer.getData("text");
+            const draggedElement = document.getElementById(draggedId);
+            const targetElement = document.getElementById(targetId);
+
+            // Check if the draggedElement is not the same as the targetElement
+            if (draggedElement !== targetElement) {
+                swapElements(draggedElement, targetElement);
+            }
+            // Reset the cursor to the default
+            draggedElement.style.cursor = 'grab';
+        }
+
+
+
+        // Function to handle the end of dragging with animation
+        function endDrag(event) {
+            event.target.classList.remove('opacity-50');
+            // Animate the element back to its original position if not dropped
+            event.target.style.transform = 'translate(0, 0)';
+            // Reset the cursor to the default
+            event.target.style.cursor = 'grab';
+        }
+
+
+        // Function to handle the start of dragging with animation
+        function startDrag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+            event.target.classList.add('opacity-50');
+            // Lift the element slightly to indicate that it's being dragged
+            event.target.style.transform = 'translate(0, -10px)';
+            // Set the cursor to 'move' during the drag operation
+            event.dataTransfer.dropEffect = "move";
+        }
+
+
+        // Swapping contents of elements and handling draggable attribute
+        function swapElements(draggedElement, targetElement) {
+            // Check if the target element is one of the dropzones
+            if (targetElement.classList.contains('dropzone')) {
+                let draggedText = draggedElement.textContent;
+                let targetText = targetElement.textContent;
+
+                // Swapping content
+                draggedElement.textContent = targetText;
+                targetElement.textContent = draggedText;
+
+                // Ensuring both elements are draggable
+                draggedElement.setAttribute('draggable', 'true');
+                targetElement.setAttribute('draggable', 'true');
+
+                // Animate the elements to swap positions
+                const draggedRect = draggedElement.getBoundingClientRect();
+                const targetRect = targetElement.getBoundingClientRect();
+                const dx = targetRect.left - draggedRect.left;
+                const dy = targetRect.top - draggedRect.top;
+
+                draggedElement.style.transform = `translate(${dx}px, ${dy}px)`;
+                targetElement.style.transform = `translate(${-dx}px, ${-dy}px)`;
+
+                // Reset styles after a delay to match the transition
+                setTimeout(() => {
+                    draggedElement.style.transform = 'translate(0, 0)';
+                    targetElement.style.transform = 'translate(0, 0)';
+                    draggedElement.classList.remove('dragging');
+                }, 200);
+                setTimeout(() => {
+                    check();
+                }, 500);
+            }
+        }
+
+
+
+        // Adding event listeners to the draggable elements
+        document.querySelectorAll('.dropzone').forEach(dropzone => {
+            dropzone.addEventListener('dragstart', function (event) {
+                startDrag(event);
+                // Explicitly set the cursor to 'move'
+                event.dataTransfer.dropEffect = "move";
+            });
+            dropzone.addEventListener('dragend', endDrag);
+            dropzone.addEventListener('dragover', function (event) {
+                event.preventDefault();
+                // Set the cursor to 'move' during the dragover
+                event.dataTransfer.dropEffect = "move";
+            });
+            dropzone.addEventListener('drop', function (event) {
+                dropped(event, this.id);
+            });
+        });
+
+        document.querySelectorAll('.draggable, .dropzone').forEach(element => {
+            element.addEventListener('dragstart', startDrag);
+            element.addEventListener('dragend', endDrag);
+        });
+
+        // Since the draggable items are not using .dropzone class, they need separate event listeners.
+        document.querySelectorAll('.bg-red-400').forEach(draggable => {
+            draggable.addEventListener('dragstart', function (event) {
+                startDrag(event);
+                // Explicitly set the cursor to 'move'
+                event.dataTransfer.dropEffect = "move";
+            });
+            draggable.addEventListener('dragend', endDrag);
+        });
+
+        function check() {
+    // Find all drop zones
+    const dropzones = document.querySelectorAll('.dropzone');
+    let allFilled = true;
+    let answersArray = [];
+
+    // Iterate over each drop zone and assemble the answer string as an array
+    dropzones.forEach(dropzone => {
+        if (dropzone.textContent === '_') {
+            allFilled = false;
+        } else {
+            answersArray.push(dropzone.textContent);
+        }
+    });
+
+    // If all drop zones are filled with letters other than "_"
+    if (allFilled) {
+        sendCheckRequest(answersArray); // Pass the answersArray to the function
+    }
+}
+function showWrongContent() {
+  fetch('wrong.html')
+    .then(response => response.text())
+    .then(html => {
+      document.body.innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load page', err));
+}
+
+function showDoneContent() {
+  fetch('done.html')
+    .then(response => response.text())
+    .then(html => {
+      document.body.innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load page', err));
+}
+async function sendCheckRequest(answersArray) {
+  const answers = answersArray.join(',');
+
+  const url = `http://localhost:3000/check?userId=${uuid}&answers=${answers}`;
+  console.log(url);
+
+  try {
+      const response = await fetch(url);
+      if (response.ok) {
+          const result = await response.json();
+          console.log(result);
+
+          // Check for the next game type
+          if (result.nextGameType === 'stt') {
+              // Load speech game HTML
+              loadSpeechGame();
+          } else if (result.successRate > 70) {
+              // Show done content
+              showDoneContent();
+          } else {
+              // Show wrong content
+              showWrongContent();
+          }
+      } else {
+          throw new Error('Network response was not ok');
+      }
+  } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+  }
+}
+
+// Function to load speech game HTML content
+function loadSpeechGame() {
+  fetch('speech.html')
+    .then(response => response.text())
+    .then(html => {
+      document.body.innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load speech game page', err));
+}
+        
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: [
+                "*.{html}"
+            ],
+            theme: {
+                extend: {
+                    backgroundImage: {
+                        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+                        "gradient-conic":
+                            "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+                            'login_bg': "url('assets/images/login_bg.webp')",
+                    },
+                    fontFamily: {
+                        valoon: ["Valoon", "sans-serif"],
+                        varela: ["Varela Round", "sans-serif"],
+                        farsan: ["Farsan", "cursive"],
+                        ghibo: ["Ghibo Talk", "sans-serif"],
+                        superbubble: ["Super Bubble", "sans-serif"],
+                    },
+                },
+            },
+            plugins: [],
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Farsan&display=swap');
+
+        :root {
+            --foreground-rgb: 0, 0, 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --foreground-rgb: 255, 255, 255;
+            }
+        }
+
+        body {
+            color: rgb(var(--foreground-rgb));
+            background: #FFF8E7;
+        }
+
+        .text-stroke-3 {
+            text-shadow: -2px -2px 0 white, 2px -2px 0 white, -2px 2px 0 white, 2px 2px 0 white;
+        }
+        
+        @font-face {
+            font-family: 'Valoon';
+            src: url('assets/Valoon.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Super Bubble';
+            src: url('assets/Super Bubble.ttf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Ghibo Talk';
+            src: url('assets/Ghibo Talk.otf') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Preventing the default image drag behavior */
+        div[draggable="true"] {
+            cursor: pointer;
+        }
+
+        /* Add transitions for smooth dragging and dropping */
+        .dropzone,
+        .draggable {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Cursor updates */
+        .draggable {
+            cursor: grab;
+        }
+
+        .draggable:active {
+            cursor: grabbing;
+        }
+
+        .dropzone {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="bg-login_bg bg-cover bg-no-repeat bg-center w-screen h-screen m-0 p-0 flex  justify-center select-none ">
+	<div class="w-screen h-screen flex flex-col justify-center items-center">
+		<form id="loginForm" class="gap-y-16 flex flex-col justify-center items-center">
+			<div class="max-w-[867px] max-h-[158px] text-blue-950 md:text-8xl text-7xl font-normal  text-stroke-3 font-valoon z-[1]">LingoLand Jr</div>
+			<div class="w-[630px] max-h-[138px] text-center text-white md:text-8xl text-6xl font-normal font-varela">Welcome</div>
+	
+			<div class="max-w-[600px] w-[60%] h-[90px] mt-[5%] w-full h-full relative flex justify-center items-center md:scale-100 scale-[80%]">
+				<div class="w-full h-[80px] absolute bg-stone-400 rounded-[58px] border-8 border-stone-400 blur-[30px]"></div>
+				<div class="w-full h-[80px] absolute bg-slate-400 rounded-[58px]"></div>
+				<input id="usernameInput" type="text" placeholder="username" class="w-full z-10 h-[90px] absolute inset-0 m-auto px-8 text-zinc-600 placeholder-zinc-600 text-4xl text-center font-normal font-varela bg-transparent border-none outline-none" />
+			</div>
+			<div class="max-w-[266px] max-h-[90px] mt-[5%] w-full h-[66px] relative flex flex-col justify-center items-center  rounded-[58px] md:scale-100 scale-[80%]">
+				<div class="w-full h-[66px] absolute bg-stone-400 rounded-[58px] border-8 border-stone-400 blur-[30px]"></div>
+				<button type="submit" class="w-full h-[60px] absolute bg-slate-400 rounded-[58px] z-10 text-center text-blue-950 text-5xl font-bold font-varela">
+					Login
+				</button>
+			</div>
+		</form>
+	</div>
+	
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const usernameInput = document.getElementById('usernameInput');
+                const username = encodeURIComponent(usernameInput.value);
+
+                fetch(`http://localhost:3000/user?username=${username}`, {
+                method: 'GET'
+                })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+                })
+                .then(data => {
+                console.log(data);
+                // Save the entire data object to localStorage by serializing it to a JSON string
+                localStorage.setItem('userData', JSON.stringify(data));
+                // Redirect to /game.html
+                window.location.href = './dynamic.html';
+                })
+                .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

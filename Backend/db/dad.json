@@ -1,0 +1,139 @@
+{
+  "dad": [
+    {
+      "level": "0",
+      "type": "dad",
+      "images": [
+        {
+          "src": "assets/images/sun.png",
+          "alt": "_un",
+          "word": "Sun"
+        },
+        {
+          "src": "assets/images/bun.png",
+          "alt": "_un",
+          "word": "Bun"
+        }
+      ],
+      "letters": [
+        {
+          "static": [
+            "u"
+          ],
+          "draggable": [
+            "S",
+            "B"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "1",
+      "type": "dad",
+      "images": [
+        {
+          "src": "assets/images/box.png",
+          "alt": "_ox",
+          "word": "Box"
+        },
+        {
+          "src": "assets/images/fox.png",
+          "alt": "_ox",
+          "word": "Fox"
+        }
+      ],
+      "letters": [
+        {
+          "static": [
+            "o", "x"
+          ],
+          "draggable": [
+            "B",
+            "F"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "2",
+      "type": "dad",
+      "images": [
+        {
+          "src": "assets/images/cap.png",
+          "alt": "Ca_",
+          "word": "Cap"
+        },
+        {
+          "src": "assets/images/car.png",
+          "alt": "Ca_",
+          "word": "Car"
+        }
+      ],
+      "letters": [
+        {
+          "static": [
+            "C", "a"
+          ],
+          "draggable": [
+            "p",
+            "r"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "3",
+      "type": "dad",
+      "images": [
+        {
+          "src": "assets/images/cat.png",
+          "alt": "_at",
+          "word": "Cat"
+        },
+        {
+          "src": "assets/images/hat.png",
+          "alt": "_at",
+          "word": "Hat"
+        }
+      ],
+      "letters": [
+        {
+          "static": [
+            "a", "t"
+          ],
+          "draggable": [
+            "C",
+            "H"
+          ]
+        }
+      ]
+    },
+    {
+      "level": "4",
+      "type": "dad",
+      "images": [
+        {
+          "src": "assets/images/jam.png",
+          "alt": "Ja_",
+          "word": "Jam"
+        },
+        {
+          "src": "assets/images/jar.png",
+          "alt": "Ja_",
+          "word": "Jar"
+        }
+      ],
+      "letters": [
+        {
+          "static": [
+            "J", "a"
+          ],
+          "draggable": [
+            "m",
+            "r"
+          ]
+        }
+      ]
+    }
+  ]
+}
