@@ -125,8 +125,8 @@
         const {uuid , gameType} = data;
         // console.log(data);
         async function fetchGame(uuid , gameType) {
-            console.log(`http://localhost:3000/game?type=${gameType}&uuid=${uuid}`)
-                return await fetch(`http://localhost:3000/game?type=${gameType}&uuid=${uuid}`, {
+            console.log(//dyslexiaback.ainz.uk/game?type=${gameType}&uuid=${uuid})
+                return await fetch(//dyslexiaback.ainz.uk/game?type=${gameType}&uuid=${uuid}, {
                   method: 'GET'
                 })
                 .then(response => {
@@ -143,10 +143,14 @@
         document.addEventListener('DOMContentLoaded', async function () {
             const gameData = await fetchGame(uuid , gameType);
             console.log(gameData);
-            
+            if (gameData && gameData.gameType === 'stt') {
+                // Redirect to speech.html if gameType is 'stt'
+                window.location.href = 'speech.html';
+                return; // Stop executing the rest of the code
+            }
             function insertLevel(level) {
                 const levelContainer = document.querySelector('.level-container');
-                levelContainer.innerHTML = `<span>Level ${level}</span>`;
+                levelContainer.innerHTML = <span>Level ${level}</span>;
             }
 
             function insertImagesAndLetters(images, letters) {
@@ -161,9 +165,9 @@
                     if (index < imageContainers.length) {
                         const letterHtml = image.alt.split('').map((char, i) => {
                             if (char === '_') {
-                                return `<div class="dropzone bg-[#1B0735] border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center font-superbubble" id="dropzone${index}-${i}">_</div>`;
+                                return <div class="dropzone bg-[#1B0735] text-white border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center font-superbubble" id="dropzone${index}-${i}">_</div>;
                             } else {
-                                return `<div class="bg-[#1B0735] border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center font-superbubble">${char}</div>`;
+                                return <div class="bg-[#1B0735] text-white  border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center font-superbubble">${char}</div>;
                             }
                         }).join('');
 
@@ -188,11 +192,10 @@
                 }
                 const draggableLettersHtml = letters[0].draggable.map((letter, i) => {
                     return `
-      <div class="draggable bg-[#1B0735] border border-white rounded-[30px] p-4 text-4xl flex items-center justify-center cursor-pointer" draggable="true" id="draggable-${i}">${letter}</div>
+      <div class="draggable bg-[#1B0735] border  text-white  border-white rounded-[30px] p-4 text-4xl flex items-center justify-center cursor-pointer" draggable="true" id="draggable-${i}">${letter}</div>
     `}).join('');
                 draggableLettersContainer.innerHTML = draggableLettersHtml;
             }
-
             insertLevel(gameData.level);
             insertImagesAndLetters(gameData.images, gameData.letters);
             insertDraggableLetters(gameData.letters);
@@ -286,8 +289,8 @@
                 const dx = targetRect.left - draggedRect.left;
                 const dy = targetRect.top - draggedRect.top;
 
-                draggedElement.style.transform = `translate(${dx}px, ${dy}px)`;
-                targetElement.style.transform = `translate(${-dx}px, ${-dy}px)`;
+                draggedElement.style.transform = translate(${dx}px, ${dy}px);
+                targetElement.style.transform = translate(${-dx}px, ${-dy}px);
 
                 // Reset styles after a delay to match the transition
                 setTimeout(() => {
@@ -376,7 +379,7 @@ function showDoneContent() {
 async function sendCheckRequest(answersArray) {
   const answers = answersArray.join(',');
 
-  const url = `http://localhost:3000/check?userId=${uuid}&answers=${answers}`;
+  const url = //dyslexiaback.ainz.uk/check?userId=${uuid}&answers=${answers};
   console.log(url);
 
   try {
@@ -406,14 +409,9 @@ async function sendCheckRequest(answersArray) {
 
 // Function to load speech game HTML content
 function loadSpeechGame() {
-  fetch('speech.html')
-    .then(response => response.text())
-    .then(html => {
-      document.body.innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load speech game page', err));
+  // Redirect to speech.html
+  window.location.href = 'speech.html';
 }
-        
 
 
 
