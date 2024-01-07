@@ -1,0 +1,342 @@
+{
+    "userData": {
+      "da9d0546-7364-43f7-abab-4e1fafa7293d-1704618666252": {
+        "userId": "da9d0546-7364-43f7-abab-4e1fafa7293d",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:11:06.252Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      },
+      "2f71b58f-a74a-495b-bc66-05323e9d1a12-1704619006118": {
+        "userId": "2f71b58f-a74a-495b-bc66-05323e9d1a12",
+        "level": 1,
+        "gameType": "dad",
+        "rightAnswers": 2,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:16:46.118Z",
+        "answers": [
+          "S",
+          "B"
+        ]
+      },
+      "2f71b58f-a74a-495b-bc66-05323e9d1a12-1704619015481": {
+        "userId": "2f71b58f-a74a-495b-bc66-05323e9d1a12",
+        "level": 2,
+        "gameType": "dad",
+        "rightAnswers": 4,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:16:55.481Z",
+        "answers": [
+          "B",
+          "F"
+        ]
+      },
+      "2f71b58f-a74a-495b-bc66-05323e9d1a12-1704619026845": {
+        "userId": "2f71b58f-a74a-495b-bc66-05323e9d1a12",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:17:06.845Z",
+        "answers": [
+          "p",
+          "r"
+        ]
+      },
+      "2f71b58f-a74a-495b-bc66-05323e9d1a12-1704619036675": {
+        "userId": "2f71b58f-a74a-495b-bc66-05323e9d1a12",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:17:16.675Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      },
+      "a8a4ebde-3116-4704-a8ef-8500d5a45461-1704619267255": {
+        "userId": "a8a4ebde-3116-4704-a8ef-8500d5a45461",
+        "level": 1,
+        "gameType": "dad",
+        "rightAnswers": 2,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:21:07.255Z",
+        "answers": [
+          "S",
+          "B"
+        ]
+      },
+      "a8a4ebde-3116-4704-a8ef-8500d5a45461-1704619282441": {
+        "userId": "a8a4ebde-3116-4704-a8ef-8500d5a45461",
+        "level": 2,
+        "gameType": "dad",
+        "rightAnswers": 4,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:21:22.441Z",
+        "answers": [
+          "B",
+          "F"
+        ]
+      },
+      "a8a4ebde-3116-4704-a8ef-8500d5a45461-1704619289125": {
+        "userId": "a8a4ebde-3116-4704-a8ef-8500d5a45461",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:21:29.125Z",
+        "answers": [
+          "p",
+          "r"
+        ]
+      },
+      "a8a4ebde-3116-4704-a8ef-8500d5a45461-1704619296152": {
+        "userId": "a8a4ebde-3116-4704-a8ef-8500d5a45461",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:21:36.152Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      },
+      "48136ab5-b61f-45be-9c62-61b356366b5c-1704620679302": {
+        "userId": "48136ab5-b61f-45be-9c62-61b356366b5c",
+        "level": 1,
+        "gameType": "dad",
+        "rightAnswers": 2,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:44:39.302Z",
+        "answers": [
+          "S",
+          "B"
+        ]
+      },
+      "48136ab5-b61f-45be-9c62-61b356366b5c-1704620688385": {
+        "userId": "48136ab5-b61f-45be-9c62-61b356366b5c",
+        "level": 2,
+        "gameType": "dad",
+        "rightAnswers": 4,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:44:48.385Z",
+        "answers": [
+          "B",
+          "F"
+        ]
+      },
+      "48136ab5-b61f-45be-9c62-61b356366b5c-1704620696021": {
+        "userId": "48136ab5-b61f-45be-9c62-61b356366b5c",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:44:56.021Z",
+        "answers": [
+          "p",
+          "r"
+        ]
+      },
+      "48136ab5-b61f-45be-9c62-61b356366b5c-1704620702586": {
+        "userId": "48136ab5-b61f-45be-9c62-61b356366b5c",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:45:02.586Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      },
+      "3a9677c1-f374-4eaf-bca7-6dcec1805230-1704621194223": {
+        "userId": "3a9677c1-f374-4eaf-bca7-6dcec1805230",
+        "level": 1,
+        "gameType": "dad",
+        "rightAnswers": 2,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:53:14.223Z",
+        "answers": [
+          "S",
+          "B"
+        ]
+      },
+      "3a9677c1-f374-4eaf-bca7-6dcec1805230-1704621205646": {
+        "userId": "3a9677c1-f374-4eaf-bca7-6dcec1805230",
+        "level": 2,
+        "gameType": "dad",
+        "rightAnswers": 4,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:53:25.646Z",
+        "answers": [
+          "B",
+          "F"
+        ]
+      },
+      "3a9677c1-f374-4eaf-bca7-6dcec1805230-1704621213479": {
+        "userId": "3a9677c1-f374-4eaf-bca7-6dcec1805230",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:53:33.479Z",
+        "answers": [
+          "p",
+          "r"
+        ]
+      },
+      "3a9677c1-f374-4eaf-bca7-6dcec1805230-1704621221384": {
+        "userId": "3a9677c1-f374-4eaf-bca7-6dcec1805230",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:53:41.384Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      },
+      "1892ce35-7c8d-41df-8f89-96888d86d350-1704621304710": {
+        "userId": "1892ce35-7c8d-41df-8f89-96888d86d350",
+        "level": 1,
+        "gameType": "dad",
+        "rightAnswers": 2,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:55:04.710Z",
+        "answers": [
+          "S",
+          "B"
+        ]
+      },
+      "1892ce35-7c8d-41df-8f89-96888d86d350-1704621312406": {
+        "userId": "1892ce35-7c8d-41df-8f89-96888d86d350",
+        "level": 2,
+        "gameType": "dad",
+        "rightAnswers": 4,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:55:12.406Z",
+        "answers": [
+          "B",
+          "F"
+        ]
+      },
+      "1892ce35-7c8d-41df-8f89-96888d86d350-1704621319692": {
+        "userId": "1892ce35-7c8d-41df-8f89-96888d86d350",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:55:19.692Z",
+        "answers": [
+          "p",
+          "r"
+        ]
+      },
+      "1892ce35-7c8d-41df-8f89-96888d86d350-1704621326858": {
+        "userId": "1892ce35-7c8d-41df-8f89-96888d86d350",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 2,
+        "successRate": 0,
+        "timestamp": "2024-01-07T09:55:26.858Z",
+        "answers": [
+          "H",
+          "C"
+        ]
+      },
+      "1892ce35-7c8d-41df-8f89-96888d86d350-1704621335337": {
+        "userId": "1892ce35-7c8d-41df-8f89-96888d86d350",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 2,
+        "successRate": 100,
+        "timestamp": "2024-01-07T09:55:35.337Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      },
+      "e8a3f377-5332-4cf9-97ac-10898e103098-1704622001296": {
+        "userId": "e8a3f377-5332-4cf9-97ac-10898e103098",
+        "level": 1,
+        "gameType": "dad",
+        "rightAnswers": 2,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T10:06:41.296Z",
+        "answers": [
+          "S",
+          "B"
+        ]
+      },
+      "e8a3f377-5332-4cf9-97ac-10898e103098-1704622013644": {
+        "userId": "e8a3f377-5332-4cf9-97ac-10898e103098",
+        "level": 2,
+        "gameType": "dad",
+        "rightAnswers": 4,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T10:06:53.644Z",
+        "answers": [
+          "B",
+          "F"
+        ]
+      },
+      "e8a3f377-5332-4cf9-97ac-10898e103098-1704622022324": {
+        "userId": "e8a3f377-5332-4cf9-97ac-10898e103098",
+        "level": 3,
+        "gameType": "dad",
+        "rightAnswers": 6,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T10:07:02.324Z",
+        "answers": [
+          "p",
+          "r"
+        ]
+      },
+      "e8a3f377-5332-4cf9-97ac-10898e103098-1704622029976": {
+        "userId": "e8a3f377-5332-4cf9-97ac-10898e103098",
+        "level": 4,
+        "gameType": "stt",
+        "rightAnswers": 8,
+        "wrongAnswers": 0,
+        "successRate": 100,
+        "timestamp": "2024-01-07T10:07:09.976Z",
+        "answers": [
+          "C",
+          "H"
+        ]
+      }
+    }
+  }
