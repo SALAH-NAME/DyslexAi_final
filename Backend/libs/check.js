@@ -1,6 +1,6 @@
 // libs/check.js
 const path = require('path');
-const JsonDB = require('../db.js'); // Ensure this path is correct
+const JsonDB = require(__dirname + '/../db.js'); // Ensure this path is correct
 
 const checkLib = {
   get: (req, res, db) => {
@@ -67,6 +67,39 @@ const checkLib = {
     
     // Update the user data in the database
     db.update('users', userId, user);
+
+      // After updating the user's data in the database
+      try {
+        // Initialize the JsonDB instance for the collection
+        const collectionDbPath = path.join(__dirname, '..', 'db', 'collection.json');
+        const collectionDb = new JsonDB(collectionDbPath);
+  
+        // Prepare the data to be stored
+        const userDataForCollection = {
+          userId: userId,
+          level: user.level,
+          gameType: user.gameType,
+          rightAnswers: user.rightAnswers,
+          wrongAnswers: user.wrongAnswers,
+          successRate: user.successRate,
+          timestamp: new Date().toISOString(),
+          answers: userAnswers
+        };
+  
+        // Generate a unique key for each entry, such as a timestamp or a combination of userId and timestamp
+        const entryKey = `${userId}-${Date.now()}`;
+  
+        // Append the new data to the collection using JsonDB
+        collectionDb.update('userData', entryKey, userDataForCollection);
+  
+        // Since the update is synchronous, no need for async/await here
+        // If the update method was async, you would await it
+  
+      } catch (error) {
+        console.error('Failed to save user data to collection.json using JsonDB:', error);
+        // Handle the error appropriately
+        // You might want to send a server error response or just log the error
+      }
     
     // Return the updated user information and the next game type
     res.json({
